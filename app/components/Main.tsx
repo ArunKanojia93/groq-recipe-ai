@@ -8,7 +8,7 @@ import Background from "./Background";
 import { RecipeCard } from "./RecipeCard";
 
 const Suggestions = ["Apple Pie", "Chicken Tikka Masala", "Caesar Salad", "Cupcakes"];
-export default function ChatBox() {
+export default function Main() {
   const [recipeName, setRecipeName] = useState("");
 
   const { object, submit, isLoading } = useObject({
@@ -35,10 +35,16 @@ export default function ChatBox() {
         </div>
       )}
       <div className="flex flex-col gap-8 w-full max-w-lg px-6 md:px-0 mt-8">
-        <div className="flex gap-4 flex-wrap justify-end md:justify-between">
+        <div className="flex gap-4 flex-wrap justify-between">
           <span className="text-foreground font-bold w-full">Suggestions: </span>
           {Suggestions.map((suggestion) => (
-            <button onClick={() => submit(suggestion)} key={suggestion} className="rounded-lg bg-indigo-700 px-3 py-1.5 text-white text-sm font-bold shadow-[0_0_4px_1px] hover:shadow-gray-400 transition-shadow duration-300">
+            <button
+              onClick={() => submit(suggestion)}
+              key={suggestion}
+              className={`${isLoading ? "cursor-not-allowed opacity-50" : ""} ${
+                suggestion === "Chicken Tikka Masala" ? "hidden md:block" : ""
+              } rounded-lg bg-indigo-700 px-3 py-1.5 text-white text-sm font-bold shadow-[0_0_4px_1px] hover:shadow-gray-400 transition-shadow duration-300`}
+            >
               {suggestion}
             </button>
           ))}

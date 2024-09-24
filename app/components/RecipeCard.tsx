@@ -12,8 +12,8 @@ export const RecipeCard = ({ recipeObject }: { recipeObject: z.infer<typeof reci
         {recipeObject.recipe?.note}
       </div>
       <br />
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,320px)_minmax(200px,1fr))] gap-4 justify-between">
-        <div className="flex flex-col border max-w-80 rounded-md px-4 py-2 h-fit">
+      <div className="grid grid-cols-1 md:grid-cols-[repeat(1,minmax(200px,320px)_minmax(420px,1fr))] gap-4 justify-between">
+        <div className="flex flex-col border rounded-md px-4 py-2 h-fit">
           <span className="text-xl font-bold">Ingredients:</span>{" "}
           {recipeObject.recipe?.ingredients?.map(
             (i, idx) =>
